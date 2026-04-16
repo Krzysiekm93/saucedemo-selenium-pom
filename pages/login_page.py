@@ -10,6 +10,7 @@ class Locators:
     USERNAME = (By.ID, 'user-name')
     PASSWORD = (By.ID, 'password')
     LOGIN_LINK = (By.ID, 'login-button')
+    VISIBLE_ERROR = (By.CLASS_NAME, "error-message-container.error")
 
 class LoginPage(BasePage):
     """
@@ -33,8 +34,12 @@ class LoginPage(BasePage):
 
     def click_login(self):
         """
-        Click `login` button and goes to `inventory` page
-        :return: InventoryPage Object
+        Click `login` button
         """
         self.driver.find_element(*Locators.LOGIN_LINK).click()
-        return InventoryPage(self.driver)
+
+    def get_error(self):
+        """
+        Return error message
+        """
+        return self.driver.find_element(*Locators.VISIBLE_ERROR).text
