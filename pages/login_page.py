@@ -1,5 +1,4 @@
 from pages.base_page import BasePage
-from pages.inventory_page import InventoryPage
 from selenium.webdriver.common.by import By
 
 
