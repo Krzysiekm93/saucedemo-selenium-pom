@@ -1,5 +1,3 @@
-import time
-
 from pages.inventory_page import InventoryPage
 from pages.login_page import LoginPage
 from tests.base_test import BaseTest
@@ -15,6 +13,26 @@ class InventoryTest(BaseTest):
         self.inventory_page = InventoryPage(self.driver)
 
     def test_sort_by_name_az(self):
+        self.inventory_page.click_sort_by_name_az()
+        actual = self.inventory_page.get_product_names()
+        expected = sorted(actual)
+        self.assertEqual(actual, expected)
+
+    def test_sort_by_name_za(self):
         self.inventory_page.click_sort_by_name_za()
-        time.sleep(5)
+        actual = self.inventory_page.get_product_names()
+        expected = sorted(actual, reverse=True)
+        self.assertEqual(actual, expected)
+
+    def test_sort_by_price_asc(self):
+        self.inventory_page.click_sort_by_price_asc()
+        actual = self.inventory_page.get_product_prices()
+        expected = sorted(actual)
+        self.assertEqual(actual, expected)
+
+    def test_sort_by_price_desc(self):
+        self.inventory_page.click_sort_by_price_desc()
+        actual = self.inventory_page.get_product_prices()
+        expected = sorted(actual, reverse=True)
+        self.assertEqual(actual, expected)
 
