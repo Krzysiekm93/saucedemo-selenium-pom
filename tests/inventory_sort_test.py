@@ -3,7 +3,7 @@ from pages.login_page import LoginPage
 from tests.base_test import BaseTest
 
 
-class InventoryTest(BaseTest):
+class InventorySortTest(BaseTest):
     def setUp(self):
         super().setUp()
         self.login_page = LoginPage(self.driver)
