@@ -14,6 +14,6 @@ class InventoryCartTest(BaseTest):
 
     def test_add_products_to_cart(self):
         expected_count = self.inventory_page.add_random_products_to_cart()
-        cart_count = int(self.inventory_page.get_cart_badge_text())
+        cart_count = self.inventory_page.get_cart_badge_text()
         print(f"Expected {expected_count}, got {cart_count}")
         assert cart_count == expected_count

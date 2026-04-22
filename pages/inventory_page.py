@@ -1,5 +1,6 @@
 import random
 
+from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -86,7 +87,10 @@ class InventoryPage(BasePage):
         return size
 
     def get_cart_badge_text(self):
-        return self.driver.find_element(*Locators.QUANTITY).text
+        try:
+            return int(self.driver.find_element(*Locators.QUANTITY).text)
+        except NoSuchElementException:
+            return 0
 
     def click_shopping_cart_link(self):
         self.driver.find_element(*Locators.SHOPPING_CART_LINK).click()

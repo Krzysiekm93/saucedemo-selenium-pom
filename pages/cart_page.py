@@ -11,7 +11,4 @@ class CartPage(BasePage):
 
     def remove_last_item(self):
         remove_buttons = self.driver.find_elements(*Locators.CART_REMOVE_BUTTONS)
-        if len(remove_buttons) <= 1:
-            print("There are no items to remove!")
-            return
         remove_buttons[-1].click()
