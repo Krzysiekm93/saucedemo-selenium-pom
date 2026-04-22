@@ -1,5 +1,6 @@
 import time
 
+from pages.inventory_page import InventoryPage
 from test_data.login_data import get_sample_login_csv
 from tests.base_test import BaseTest
 
@@ -10,7 +11,8 @@ class CartTest(BaseTest):
         login, password = get_sample_login_csv('test_data/login.csv')
         self.login_page.enter_username(login)
         self.login_page.enter_password(password)
-        self.inventory_page = self.login_page.click_login()
+        self.login_page.click_login()
+        self.inventory_page = InventoryPage(self.driver)
         self.inventory_page.add_random_products_to_cart()
         self.cart_page = self.inventory_page.click_shopping_cart_link()
 

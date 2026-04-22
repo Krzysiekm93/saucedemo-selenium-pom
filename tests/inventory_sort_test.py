@@ -1,14 +1,14 @@
 from pages.inventory_page import InventoryPage
-from pages.login_page import LoginPage
+from test_data.login_data import get_sample_login_csv
 from tests.base_test import BaseTest
 
 
 class InventorySortTest(BaseTest):
     def setUp(self):
         super().setUp()
-        self.login_page = LoginPage(self.driver)
-        self.login_page.enter_username("standard_user")
-        self.login_page.enter_password("secret_sauce")
+        login, password = get_sample_login_csv('test_data/login.csv')
+        self.login_page.enter_username(login)
+        self.login_page.enter_password(password)
         self.login_page.click_login()
         self.inventory_page = InventoryPage(self.driver)
 
@@ -35,4 +35,3 @@ class InventorySortTest(BaseTest):
         actual = self.inventory_page.get_product_prices()
         expected = sorted(actual, reverse=True)
         self.assertEqual(actual, expected)
-

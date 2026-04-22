@@ -38,7 +38,6 @@ class LoginPage(BasePage):
         Click `login` button
         """
         self.driver.find_element(*Locators.LOGIN_LINK).click()
-        return InventoryPage(self.driver)
 
     def get_error(self):
         """
