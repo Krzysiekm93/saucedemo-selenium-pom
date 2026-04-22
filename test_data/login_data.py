@@ -9,3 +9,7 @@ def get_csv_data(filename):
         for row in reader:
             rows.append(row)
         return rows
+
+def get_sample_login_csv(filename):
+    rows = get_csv_data(filename)
+    return rows[0]

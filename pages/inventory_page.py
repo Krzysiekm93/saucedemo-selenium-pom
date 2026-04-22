@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from pages.base_page import BasePage
+from pages.cart_page import CartPage
 
 
 class Locators:
@@ -24,7 +25,7 @@ class Locators:
     ONESIE_ADD_TO_CART = (By.CSS_SELECTOR, '#add-to-cart-sauce-labs-onesie')
     RED_TSHIRT_ADD_TO_CART = (By.ID, 'add-to-cart-test.allthethings()-t-shirt-(red)')
     QUANTITY = (By.CLASS_NAME, "shopping_cart_badge")
-
+    SHOPPING_CART_LINK = (By.CLASS_NAME, "shopping_cart_link")
 
 class InventoryPage(BasePage):
     """Inventory Page Object"""
@@ -86,3 +87,7 @@ class InventoryPage(BasePage):
 
     def get_cart_badge_text(self):
         return self.driver.find_element(*Locators.QUANTITY).text
+
+    def click_shopping_cart_link(self):
+        self.driver.find_element(*Locators.SHOPPING_CART_LINK).click()
+        return CartPage(self.driver)

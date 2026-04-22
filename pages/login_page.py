@@ -1,6 +1,8 @@
 from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
 
+from pages.inventory_page import InventoryPage
+
 
 class Locators:
     """
@@ -36,6 +38,7 @@ class LoginPage(BasePage):
         Click `login` button
         """
         self.driver.find_element(*Locators.LOGIN_LINK).click()
+        return InventoryPage(self.driver)
 
     def get_error(self):
         """
