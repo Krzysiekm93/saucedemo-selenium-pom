@@ -12,7 +12,7 @@ class Locators:
 class CheckoutPage(BasePage):
 
     def enter_first_name(self, first_name):
-        self.driver.find_element(*Locators.FIRST_NAME).sendkeys(first_name)
+        self.driver.find_element(*Locators.FIRST_NAME).send_keys(first_name)
 
     def enter_last_name(self, last_name):
         self.driver.find_element(*Locators.LAST_NAME).send_keys(last_name)
