@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 
 from pages.base_page import BasePage
+from pages.checkout_two_page import CheckoutTwoPage
 
 
 class Locators:
@@ -22,3 +23,4 @@ class CheckoutOnePage(BasePage):
 
     def click_continue(self):
         self.driver.find_element(*Locators.CONTINUE_BUTTON).click()
+        return CheckoutTwoPage(self.driver)

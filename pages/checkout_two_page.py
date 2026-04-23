@@ -9,4 +9,4 @@ class Locators:
 class CheckoutTwoPage(BasePage):
 
     def click_finish_button(self):
-        self.driver.find_element(*Locators.FINISH_BUTTON)
+        self.driver.find_element(*Locators.FINISH_BUTTON).click()

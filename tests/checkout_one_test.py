@@ -4,7 +4,7 @@ from tests.base_test import BaseTest
 from test_data.login_data import RegistrationDataGenerator
 
 
-class CheckoutTest(BaseTest):
+class CheckoutOneTest(BaseTest):
     def setUp(self):
         super().setUp()
         login, password = get_sample_login_csv('test_data/login.csv')
@@ -14,12 +14,12 @@ class CheckoutTest(BaseTest):
         self.inventory_page = InventoryPage(self.driver)
         self.inventory_page.add_random_products_to_cart()
         self.cart_page = self.inventory_page.click_shopping_cart_link()
-        self.checkout_page = self.cart_page.click_checkout()
+        self.checkout_one_page = self.cart_page.click_checkout()
         self.data = RegistrationDataGenerator()
 
-    def test_checkout(self):
-        self.checkout_page.enter_first_name(self.data.FIRST_NAME)
-        self.checkout_page.enter_last_name(self.data.LAST_NAME)
-        self.checkout_page.enter_postal_code(self.data.POSTAL_CODE)
-        self.checkout_page.click_continue()
+    def test_checkout_one(self):
+        self.checkout_one_page.enter_first_name(self.data.FIRST_NAME)
+        self.checkout_one_page.enter_last_name(self.data.LAST_NAME)
+        self.checkout_one_page.enter_postal_code(self.data.POSTAL_CODE)
+        self.checkout_one_page.click_continue()
         self.assertIn("checkout-step-two", self.driver.current_url)
