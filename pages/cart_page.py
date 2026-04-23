@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 from pages.base_page import BasePage
-from pages.checkout_page import CheckoutPage
+from pages.checkout_one_page import CheckoutOnePage
 
 
 class Locators:
@@ -17,4 +17,4 @@ class CartPage(BasePage):
 
     def click_checkout(self):
         self.driver.find_element(*Locators.CHECKOUT_BUTTON).click()
-        return CheckoutPage(self.driver)
+        return CheckoutOnePage(self.driver)

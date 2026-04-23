@@ -9,7 +9,7 @@ class Locators:
     POSTAL_CODE = (By.ID, 'postal-code')
     CONTINUE_BUTTON = (By.ID, 'continue')
 
-class CheckoutPage(BasePage):
+class CheckoutOnePage(BasePage):
 
     def enter_first_name(self, first_name):
         self.driver.find_element(*Locators.FIRST_NAME).send_keys(first_name)
