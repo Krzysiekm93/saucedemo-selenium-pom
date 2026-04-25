@@ -1,6 +1,7 @@
 import pytest
 from selenium import webdriver
 from pages.login_page import LoginPage
+from test_data.login_data import get_sample_login_csv
 
 
 @pytest.fixture(scope="session")
@@ -17,9 +18,10 @@ def driver(base_url):
     driver.quit()
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def standard_user_credentials():
-    return {"username": "standard_user", "password": "secret_sauce"}
+    username, password = get_sample_login_csv("test_data/login.csv")
+    return {"username": username, "password": password}
 
 
 @pytest.fixture
