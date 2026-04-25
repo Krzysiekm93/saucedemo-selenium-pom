@@ -1,7 +1,7 @@
 from ddt import ddt, data, unpack
 import test_data.login_data
 from pages.login_page import LoginPage
-from tests.base_test import BaseTest
+from tests.conftest import BaseTest
 
 
 @ddt

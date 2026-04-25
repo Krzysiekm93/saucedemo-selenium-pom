@@ -2,7 +2,7 @@ import time
 
 from pages.inventory_page import InventoryPage
 from test_data.login_data import get_sample_login_csv
-from tests.base_test import BaseTest
+from tests.conftest import BaseTest
 
 
 class CartTest(BaseTest):

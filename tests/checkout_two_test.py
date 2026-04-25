@@ -1,7 +1,6 @@
 from pages.inventory_page import InventoryPage
-from test_data.login_data import get_sample_login_csv
-from tests.base_test import BaseTest
-from test_data.login_data import RegistrationDataGenerator
+from tests.conftest import BaseTest
+from test_data.login_data import RegistrationDataGenerator, get_sample_login_csv
 
 
 class CheckoutTwoTest(BaseTest):
