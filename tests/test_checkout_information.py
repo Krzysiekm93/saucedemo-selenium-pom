@@ -6,6 +6,9 @@ from test_data.login_data import RegistrationDataGenerator
 @pytest.mark.ui
 @pytest.mark.parametrize("driver", ["desktop", "mobile"], indirect=True)
 def test_checkout_information_continue(logged_in_driver):
+    """
+    Verify checkout information form can be submitted successfully.
+    """
     inventory_page = InventoryPage(logged_in_driver)
     inventory_page.add_random_products_to_cart()
     cart_page = inventory_page.click_shopping_cart_link()

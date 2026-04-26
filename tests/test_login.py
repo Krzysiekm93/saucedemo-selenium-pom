@@ -11,6 +11,9 @@ from pages.login_page import LoginPage
                              if row[0] != "locked_out_user"
                          ])
 def test_successful_login_data(driver, username, password):
+    """
+    Verify non-locked users can log in and are redirected to inventory page.
+    """
     login_page = LoginPage(driver)
     login_page.enter_username(username)
     login_page.enter_password(password)
@@ -27,6 +30,9 @@ def test_successful_login_data(driver, username, password):
                              if row[0] == "locked_out_user"
                          ])
 def test_locked_out_login_data(driver, username, password):
+    """
+    Verify locked-out user cannot log in and gets expected error message.
+    """
     login_page = LoginPage(driver)
     login_page.enter_username(username)
     login_page.enter_password(password)

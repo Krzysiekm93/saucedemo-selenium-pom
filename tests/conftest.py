@@ -8,6 +8,9 @@ from utils.devices import DEFAULT_MOBILE_DEVICE
 
 
 def pytest_addoption(parser):
+    """
+    Add custom command-line options for pytest runs.
+    """
     parser.addoption(
         "--target",
         action="store",
@@ -18,6 +21,14 @@ def pytest_addoption(parser):
 
 
 def pytest_collection_modifyitems(config, items):
+    """
+    Filter collected tests by the `--target` option.
+
+    This hook narrows execution to a single platform target (`desktop` or
+    `mobile`) by inspecting parametrized tests that use the `driver`
+    parameter. Tests without `driver` parametrization are always kept.
+    When `--target=both` is selected, no filtering is applied.
+    """
     target = config.getoption("--target")
     if target == "both":
         return
@@ -48,10 +59,16 @@ def pytest_collection_modifyitems(config, items):
 
 @pytest.fixture(scope="session")
 def base_url():
+    """
+    Provide base application URL for UI tests.
+    """
     return "https://www.saucedemo.com"
 
 
 def _create_driver(mobile: bool = False):
+    """
+    Create and return configured Chrome WebDriver.
+    """
     if mobile:
         options = Options()
         options.add_experimental_option("mobileEmulation", {"deviceName": DEFAULT_MOBILE_DEVICE})
@@ -64,6 +81,13 @@ def _create_driver(mobile: bool = False):
 
 @pytest.fixture
 def driver(request, base_url):
+    """
+    Provide browser driver fixture for desktop or mobile execution.
+
+    Reads parametrized target from `request.param` and starts matching
+    WebDriver configuration. The fixture opens `base_url` and closes
+    browser after test execution.
+    """
     target = getattr(request, "param", "desktop")
 
     if target == "desktop":
@@ -80,11 +104,17 @@ def driver(request, base_url):
 
 @pytest.fixture(scope="session")
 def standard_user_credentials():
+    """
+    Load and return standard user credentials from CSV test data.
+    """
     username, password = get_sample_login_csv("test_data/login.csv")
     return {"username": username, "password": password}
 
 
 def _login(driver, creds):
+    """
+    Perform login flow using provided credentials.
+    """
     login_page = LoginPage(driver)
     login_page.enter_username(creds["username"])
     login_page.enter_password(creds["password"])
@@ -93,5 +123,8 @@ def _login(driver, creds):
 
 @pytest.fixture
 def logged_in_driver(driver, standard_user_credentials):
+    """
+    Provide driver fixture with an authenticated user session.
+    """
     _login(driver, standard_user_credentials)
     return driver

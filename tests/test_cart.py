@@ -5,6 +5,9 @@ from pages.inventory_page import InventoryPage
 @pytest.mark.ui
 @pytest.mark.parametrize("driver", ["desktop", "mobile"], indirect=True)
 def test_remove_last_item(logged_in_driver):
+    """
+    Verify removing the last cart item decreases count and removes that item from cart.
+    """
     inventory_page = InventoryPage(logged_in_driver)
     inventory_page.add_random_products_to_cart()
     cart_page = inventory_page.click_shopping_cart_link()

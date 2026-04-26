@@ -5,6 +5,9 @@ from pages.inventory_page import InventoryPage
 @pytest.mark.ui
 @pytest.mark.parametrize("driver", ["desktop", "mobile"], indirect=True)
 def test_add_products_to_cart(logged_in_driver):
+    """
+    Verify cart badge count matches number of randomly added products.
+    """
     inventory_page = InventoryPage(logged_in_driver)
 
     expected_count = inventory_page.add_random_products_to_cart()
