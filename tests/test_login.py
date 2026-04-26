@@ -5,13 +5,11 @@ from pages.login_page import LoginPage
 
 @pytest.mark.ui
 @pytest.mark.parametrize("driver", ["desktop", "mobile"], indirect=True)
-@pytest.mark.parametrize(
-    "username,password",
-    [
-        row for row in test_data.login_data.get_csv_data("test_data/login.csv")
-        if row[0] != "locked_out_user"
-    ],
-)
+@pytest.mark.parametrize("username,password",
+                         [
+                             row for row in test_data.login_data.get_csv_data("test_data/login.csv")
+                             if row[0] != "locked_out_user"
+                         ])
 def test_successful_login_data(driver, username, password):
     login_page = LoginPage(driver)
     login_page.enter_username(username)
@@ -23,13 +21,11 @@ def test_successful_login_data(driver, username, password):
 
 @pytest.mark.ui
 @pytest.mark.parametrize("driver", ["desktop", "mobile"], indirect=True)
-@pytest.mark.parametrize(
-    "username,password",
-    [
-        row for row in test_data.login_data.get_csv_data("test_data/login.csv")
-        if row[0] == "locked_out_user"
-    ],
-)
+@pytest.mark.parametrize("username,password",
+                         [
+                             row for row in test_data.login_data.get_csv_data("test_data/login.csv")
+                             if row[0] == "locked_out_user"
+                         ])
 def test_locked_out_login_data(driver, username, password):
     login_page = LoginPage(driver)
     login_page.enter_username(username)

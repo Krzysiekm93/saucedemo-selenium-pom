@@ -18,6 +18,7 @@ def test_remove_last_item(logged_in_driver):
     items_after = cart_page.get_cart_item_names()
     cart_count_after_remove = int(inventory_page.get_cart_badge_text())
 
-    print(f" Before: {cart_count_before_remove}, after: {cart_count_after_remove}, removed last item: {last_item_before}")
+    print(
+        f" Before: {cart_count_before_remove}, after: {cart_count_after_remove}, removed last item: {last_item_before}")
     assert cart_count_after_remove == cart_count_before_remove - 1
     assert last_item_before not in items_after, f"Expected removed last item '{last_item_before}' to be absent"
