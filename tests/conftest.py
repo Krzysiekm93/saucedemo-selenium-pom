@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.options import Options
 
 from pages.login_page import LoginPage
 from test_data.login_data import get_sample_login_csv
-
+from utils.devices import DEFAULT_MOBILE_DEVICE
 
 @pytest.fixture(scope="session")
 def base_url():
@@ -14,7 +14,7 @@ def base_url():
 def _create_driver(mobile: bool = False):
     if mobile:
         options = Options()
-        options.add_experimental_option("mobileEmulation", {"deviceName": "iPhone 12 Pro"})
+        options.add_experimental_option("mobileEmulation", {"deviceName": DEFAULT_MOBILE_DEVICE})
         drv = webdriver.Chrome(options=options)
     else:
         drv = webdriver.Chrome()
