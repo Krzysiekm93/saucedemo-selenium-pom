@@ -3,6 +3,7 @@ from pages.inventory_page import InventoryPage
 
 
 @pytest.mark.ui
+@pytest.mark.parametrize("driver", ["driver", "mobile_driver"], indirect=True)
 def test_remove_last_item(logged_in_driver):
     inventory_page = InventoryPage(logged_in_driver)
     inventory_page.add_random_products_to_cart()
