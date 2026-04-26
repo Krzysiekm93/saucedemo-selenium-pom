@@ -3,7 +3,7 @@ from pages.inventory_page import InventoryPage
 
 
 @pytest.mark.ui
-@pytest.mark.parametrize("driver", ["driver", "mobile_driver"], indirect=True)
+@pytest.mark.parametrize("driver", ["desktop", "mobile"], indirect=True)
 def test_sort_by_name_az(logged_in_driver):
     inventory_page = InventoryPage(logged_in_driver)
     inventory_page.click_sort_by_name_az()
@@ -13,7 +13,7 @@ def test_sort_by_name_az(logged_in_driver):
 
 
 @pytest.mark.ui
-@pytest.mark.parametrize("driver", ["driver", "mobile_driver"], indirect=True)
+@pytest.mark.parametrize("driver", ["desktop", "mobile"], indirect=True)
 def test_sort_by_name_za(logged_in_driver):
     inventory_page = InventoryPage(logged_in_driver)
     inventory_page.click_sort_by_name_za()
@@ -23,7 +23,7 @@ def test_sort_by_name_za(logged_in_driver):
 
 
 @pytest.mark.ui
-@pytest.mark.parametrize("driver", ["driver", "mobile_driver"], indirect=True)
+@pytest.mark.parametrize("driver", ["desktop", "mobile"], indirect=True)
 def test_sort_by_price_asc(logged_in_driver):
     inventory_page = InventoryPage(logged_in_driver)
     inventory_page.click_sort_by_price_asc()
@@ -33,7 +33,7 @@ def test_sort_by_price_asc(logged_in_driver):
 
 
 @pytest.mark.ui
-@pytest.mark.parametrize("driver", ["driver", "mobile_driver"], indirect=True)
+@pytest.mark.parametrize("driver", ["desktop", "mobile"], indirect=True)
 def test_sort_by_price_desc(logged_in_driver):
     inventory_page = InventoryPage(logged_in_driver)
     inventory_page.click_sort_by_price_desc()

@@ -4,7 +4,7 @@ from test_data.login_data import RegistrationDataGenerator
 
 
 @pytest.mark.ui
-@pytest.mark.parametrize("driver", ["driver", "mobile_driver"], indirect=True)
+@pytest.mark.parametrize("driver", ["desktop", "mobile"], indirect=True)
 def test_finish_checkout(logged_in_driver):
     inventory_page = InventoryPage(logged_in_driver)
     inventory_page.add_random_products_to_cart()

@@ -4,7 +4,7 @@ from pages.login_page import LoginPage
 
 
 @pytest.mark.ui
-@pytest.mark.parametrize("driver", ["driver", "mobile_driver"], indirect=True)
+@pytest.mark.parametrize("driver", ["desktop", "mobile"], indirect=True)
 @pytest.mark.parametrize(
     "username,password",
     [
@@ -22,7 +22,7 @@ def test_successful_login_data(driver, username, password):
 
 
 @pytest.mark.ui
-@pytest.mark.parametrize("driver", ["driver", "mobile_driver"], indirect=True)
+@pytest.mark.parametrize("driver", ["desktop", "mobile"], indirect=True)
 @pytest.mark.parametrize(
     "username,password",
     [

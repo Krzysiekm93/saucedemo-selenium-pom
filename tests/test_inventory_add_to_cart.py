@@ -3,7 +3,7 @@ from pages.inventory_page import InventoryPage
 
 
 @pytest.mark.ui
-@pytest.mark.parametrize("driver", ["driver", "mobile_driver"], indirect=True)
+@pytest.mark.parametrize("driver", ["desktop", "mobile"], indirect=True)
 def test_add_products_to_cart(logged_in_driver):
     inventory_page = InventoryPage(logged_in_driver)
 
