@@ -19,4 +19,4 @@ class CheckoutTwoPage(BasePage):
         """
         Click the `Finish` button to complete the checkout process.
         """
-        self.driver.find_element(*Locators.FINISH_BUTTON).click()
+        self.wait_for_element_clickable(*Locators.FINISH_BUTTON).click()
