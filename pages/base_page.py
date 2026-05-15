@@ -30,6 +30,16 @@ class BasePage:
         wait = WebDriverWait(self.driver, timeout)
         return wait.until(EC.visibility_of_element_located(locator))
 
+    def wait_for_all_elements(self, locator, timeout=10):
+        """
+        Wait for all elements matching the locator to be visible.
+        :param locator: A tuple containing the strategy and value (e.g., (By.ID, "username"))
+        :param timeout: Maximum time to wait in seconds
+        :return: A list of WebElements
+        """
+        wait = WebDriverWait(self.driver, timeout)
+        return wait.until(EC.visibility_of_all_elements_located(locator))
+
     def wait_for_element_clickable(self, locator, timeout=10):
         """
         Wait for an element to be clickable.
