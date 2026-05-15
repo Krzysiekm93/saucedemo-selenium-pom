@@ -22,18 +22,18 @@ class CartPage(BasePage):
         """
         Remove the last product currently listed in the cart.
         """
-        remove_buttons = self.wait_for_element_clickable(*Locators.CART_REMOVE_BUTTONS)
+        remove_buttons = self.wait_for_element_clickable(Locators.CART_REMOVE_BUTTONS)
         remove_buttons[-1].click()
 
     def click_checkout(self):
         """
         Proceed from cart to checkout step one.
         """
-        self.wait_for_element_clickable(*Locators.CHECKOUT_BUTTON).click()
+        self.wait_for_element_clickable(Locators.CHECKOUT_BUTTON).click()
         return CheckoutOnePage(self.driver)
 
     def get_cart_item_names(self):
         """
         Get names of all items currently displayed in the cart.
         """
-        return [el.text.strip() for el in self.wait_for_element(*Locators.CART_ITEM_NAMES)]
+        return [el.text.strip() for el in self.wait_for_element(Locators.CART_ITEM_NAMES)]

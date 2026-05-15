@@ -21,22 +21,22 @@ class LoginPage(BasePage):
         """
         Enter `username` to login.
         """
-        self.wait_for_element(*Locators.USERNAME).send_keys(username)
+        self.wait_for_element(Locators.USERNAME).send_keys(username)
 
     def enter_password(self, password):
         """
         Enter `password` to login.
         """
-        self.wait_for_element(*Locators.PASSWORD).send_keys(password)
+        self.wait_for_element(Locators.PASSWORD).send_keys(password)
 
     def click_login(self):
         """
         Click the `login` button to submit credentials.
         """
-        self.wait_for_element_clickable(*Locators.LOGIN_LINK).click()
+        self.wait_for_element_clickable(Locators.LOGIN_LINK).click()
 
     def get_error(self):
         """
         Return error message.
         """
-        return self.wait_for_element(*Locators.VISIBLE_ERROR).text
+        return self.wait_for_element(Locators.VISIBLE_ERROR).text
