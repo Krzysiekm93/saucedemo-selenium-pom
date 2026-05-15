@@ -42,38 +42,38 @@ class InventoryPage(BasePage):
         """
         Click on inventory sort dropdown.
         """
-        self.driver.find_element(*Locators.SORT_CONTAINER).click()
+        self.wait_for_element_clickable(*Locators.SORT_CONTAINER).click()
 
     def click_sort_by_name_az(self):
         """
         Select sorting by product name in ascending order (A to Z).
         """
-        self.driver.find_element(*Locators.SORT_BY_ITEM_NAME_AZ).click()
+        self.wait_for_element_clickable(*Locators.SORT_BY_ITEM_NAME_AZ).click()
 
     def click_sort_by_name_za(self):
         """"
         Select sorting by product name in descending order (Z to A).
         """
-        self.driver.find_element(*Locators.SORT_BY_ITEM_NAME_ZA).click()
+        self.wait_for_element_clickable(*Locators.SORT_BY_ITEM_NAME_ZA).click()
 
     def click_sort_by_price_desc(self):
         """
         Select sorting by price in descending order (high to low).
         """
-        self.driver.find_element(*Locators.SORT_BY_PRICE_DESC).click()
+        self.wait_for_element_clickable(*Locators.SORT_BY_PRICE_DESC).click()
 
     def click_sort_by_price_asc(self):
         """
         Select sorting by price in ascending order (low to high).
         """
-        self.driver.find_element(*Locators.SORT_BY_PRICE_ASC).click()
+        self.wait_for_element_clickable(*Locators.SORT_BY_PRICE_ASC).click()
 
     def get_product_names(self):
         """
         Return all visible product names in their current display order.
         """
         names = []
-        items = self.driver.find_elements(*Locators.INVENTORY_ITEM_NAME)
+        items = self.wait_for_element(*Locators.INVENTORY_ITEM_NAME)
         for item in items:
             names.append(item.text)
         return names
@@ -83,7 +83,7 @@ class InventoryPage(BasePage):
         Return all visible product prices as floats in current display order.
         """
         prices = []
-        items = self.driver.find_elements(*Locators.INVENTORY_ITEM_PRICE)
+        items = self.wait_for_element(*Locators.INVENTORY_ITEM_PRICE)
         for item in items:
             price = item.text.replace("$", "")
             prices.append(float(price))
@@ -105,10 +105,7 @@ class InventoryPage(BasePage):
         random_products = random.sample(products, size)
 
         for product in random_products:
-            WebDriverWait(self.driver, 5).until(
-                EC.element_to_be_clickable(product)
-            ).click()
-
+           self.wait_for_element(product).click()
         return size
 
     def get_cart_badge_text(self):
@@ -116,7 +113,7 @@ class InventoryPage(BasePage):
         Get current cart badge quantity.
         """
         try:
-            return int(self.driver.find_element(*Locators.QUANTITY).text)
+            return int(self.wait_for_element(*Locators.QUANTITY).text)
         except NoSuchElementException:
             return 0
 
@@ -124,5 +121,5 @@ class InventoryPage(BasePage):
         """
         Open the shopping cart page.
         """
-        self.driver.find_element(*Locators.SHOPPING_CART_LINK).click()
+        self.wait_for_element_clickable(*Locators.SHOPPING_CART_LINK).click()
         return CartPage(self.driver)
