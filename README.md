@@ -9,7 +9,7 @@ This repository contains automated UI tests for key user flows such as login, in
 - Page Object Model structure for core SauceDemo pages (`LoginPage`, `InventoryPage`, `CartPage`, checkout pages)
 - Data-driven login tests using CSV credentials from `test_data/login.csv` (including locked-out user handling)
 - Inventory validations: sorting by name and price, with product order checks
-- Cart workflows: adding random products, cart badge/count checks, and item removal behavior
+- Cart workflows: adding specified number of products, cart badge/count checks, and item removal behavior
 - Checkout flow coverage: customer information step, overview step, and finish/complete validation
 - Cross-target execution with pytest `--target` option (`desktop`, `mobile`, `both`)
 
