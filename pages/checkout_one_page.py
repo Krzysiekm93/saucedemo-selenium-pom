@@ -19,23 +19,23 @@ class CheckoutOnePage(BasePage):
         """
         Enter customer `first name` into the checkout form.
         """
-        self.driver.find_element(*Locators.FIRST_NAME).send_keys(first_name)
+        self.wait_for_element(*Locators.FIRST_NAME).send_keys(first_name)
 
     def enter_last_name(self, last_name):
         """
         Enter customer `last name` into the checkout form.
         """
-        self.driver.find_element(*Locators.LAST_NAME).send_keys(last_name)
+        self.wait_for_element(*Locators.LAST_NAME).send_keys(last_name)
 
     def enter_postal_code(self, postal_code):
         """
         Enter customer postal code into the checkout form.
         """
-        self.driver.find_element(*Locators.POSTAL_CODE).send_keys(postal_code)
+        self.wait_for_element(*Locators.POSTAL_CODE).send_keys(postal_code)
 
     def click_continue(self):
         """
         Submit checkout information and go to checkout step two.
         """
-        self.driver.find_element(*Locators.CONTINUE_BUTTON).click()
+        self.wait_for_element_clickable(*Locators.CONTINUE_BUTTON).click()
         return CheckoutTwoPage(self.driver)
