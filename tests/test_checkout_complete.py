@@ -10,7 +10,7 @@ def test_finish_checkout(logged_in_driver):
     Verify user can finish checkout and reach the checkout complete page.
     """
     inventory_page = InventoryPage(logged_in_driver)
-    inventory_page.add_random_products_to_cart()
+    inventory_page.add_products_to_cart(2)
     cart_page = inventory_page.click_shopping_cart_link()
     checkout_one_page = cart_page.click_checkout()
 

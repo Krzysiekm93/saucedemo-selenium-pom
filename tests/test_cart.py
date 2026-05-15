@@ -9,7 +9,7 @@ def test_remove_last_item(logged_in_driver):
     Verify removing the last cart item decreases count and removes that item from cart.
     """
     inventory_page = InventoryPage(logged_in_driver)
-    inventory_page.add_random_products_to_cart()
+    inventory_page.add_products_to_cart(3)
     cart_page = inventory_page.click_shopping_cart_link()
 
     items_before = cart_page.get_cart_item_names()

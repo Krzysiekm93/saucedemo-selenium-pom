@@ -89,9 +89,10 @@ class InventoryPage(BasePage):
             prices.append(float(price))
         return prices
 
-    def add_random_products_to_cart(self):
+    def add_products_to_cart(self, count):
         """
-        Add a random subset of products to the cart.
+        Add a specific number of products to the cart.
+        :param count: The number of products to add. It must be between 1 and 6.
         """
         products = [
             Locators.BACKPACK_ADD_TO_CART,
@@ -101,12 +102,14 @@ class InventoryPage(BasePage):
             Locators.ONESIE_ADD_TO_CART,
             Locators.RED_TSHIRT_ADD_TO_CART,
         ]
-        size = random.randint(1, 6)
-        random_products = random.sample(products, size)
 
-        for product in random_products:
-           self.wait_for_element(product).click()
-        return size
+        # actual_count must be between 1 and products list length
+        actual_count = max(1, min(count, len(products)))
+
+        for product in products[:actual_count]:
+            self.wait_for_element_clickable(product).click()
+
+        return actual_count
 
     def get_cart_badge_text(self):
         """

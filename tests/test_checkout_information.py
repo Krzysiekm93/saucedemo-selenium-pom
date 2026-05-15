@@ -10,7 +10,7 @@ def test_checkout_information_continue(logged_in_driver):
     Verify checkout information form can be submitted successfully.
     """
     inventory_page = InventoryPage(logged_in_driver)
-    inventory_page.add_random_products_to_cart()
+    inventory_page.add_products_to_cart(4)
     cart_page = inventory_page.click_shopping_cart_link()
     checkout_one_page = cart_page.click_checkout()
     data = RegistrationDataGenerator()
