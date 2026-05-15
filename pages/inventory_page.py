@@ -73,7 +73,7 @@ class InventoryPage(BasePage):
         Return all visible product names in their current display order.
         """
         names = []
-        items = self.wait_for_element(Locators.INVENTORY_ITEM_NAME)
+        items = self.wait_for_all_elements(Locators.INVENTORY_ITEM_NAME)
         for item in items:
             names.append(item.text)
         return names
@@ -83,7 +83,7 @@ class InventoryPage(BasePage):
         Return all visible product prices as floats in current display order.
         """
         prices = []
-        items = self.wait_for_element(Locators.INVENTORY_ITEM_PRICE)
+        items = self.wait_for_all_elements(Locators.INVENTORY_ITEM_PRICE)
         for item in items:
             price = item.text.replace("$", "")
             prices.append(float(price))
